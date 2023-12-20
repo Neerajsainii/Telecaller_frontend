@@ -3,35 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login</title>
-    <link rel="stylesheet" href="adminLogin.css">
+    <title>Admin create</title>
+    <link rel="stylesheet" href="adminCreate.css">
 </head>
 <body>
-    <div class="login-page" id="loginPage">
+    <div class="create-page" id="createPage">
         <div class="top-buttons">
           <button class="top-button"><a href="NumberBoyLogin.html">NumberBoy</a></button>
           <button class="top-button"><a href="TelecallerLogin.html">Telecaller</a></button>
         </div>
-        <h2>Admin Login</h2>
+        <h2>Admin create</h2>
         <input type="text" id="userName" placeholder="Username">
         <input type="password" id="password" placeholder="Password">
-        <button onclick="login()">Login</button>
+        <button onclick="create()">create</button>
     
     
       </div>
-      <script>
+      <script> 
         document.addEventListener("DOMContentLoaded", () => {
 
        
-      document.getElementById("adminLoginButton").addEventListener("click", login);
-      document.getElementById("numberBoyLoginButton").addEventListener("click", numberBoyLogin);
+      document.getElementById("admincreateButton").addEventListener("click", create);
+      document.getElementById("numberBoyloginButton").addEventListener("click", numberBoylogin);
       document.getElementById("createNumberEntryButton").addEventListener("click", createNumberEntry);
 
 
 
-        document.getElementById("adminLogin").addEventListener("click", login);
+        document.getElementById("admincreate").addEventListener("click", create);
         });
-          async function login() {
+          async function create() {
         const userName = document.getElementById("userName").value;
         const password = document.getElementById("password").value;
   
@@ -41,7 +41,7 @@
         }
   
         try {
-          const response = await fetch("/api/admin-login", {
+          const response = await fetch("/api/admin-create", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -51,8 +51,8 @@
   
           if (response.status === 200) {
             const data = await response.json();
-            const authToken = data.accessToken;      
-            localStorage.setItem("authToken", authToken);
+            // const authToken = data.accessToken;      
+            // localStorage.setItem("authToken", authToken);
             window.location.href = "adminPanel.html";
           } else {
             alert("Invalid username or password");
